@@ -19,3 +19,9 @@ bun i
 bun dev
 bun run build & bun preview
 ```
+
+## 問題点
+
+最初の値が 0 になること。(うまく説明できない)
+これは LocalStorage などを介さないとダメだと思う。
+いまは Number だけど、Object になることも考えて state ライブラリを使う。

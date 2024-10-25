@@ -2,11 +2,13 @@ import { useState } from "react";
 import { Link, useHref } from "react-router-dom";
 import { useBroadcastChannel } from "use-broadcast-channel";
 import { Links } from "./App";
+import { _blank, windowFeatures } from "./Utils";
 
 function App() {
+	const receiverURL = "/2b";
 	const [count, setCount] = useState(0);
 	const postUserId = useBroadcastChannel<typeof count>("count2");
-	const location = useHref("/2b");
+	const location = useHref(receiverURL);
 
 	const handleClick = (num: number) => {
 		return () => {
@@ -29,13 +31,13 @@ function App() {
 					href={location}
 					onClick={(e) => {
 						e.preventDefault(); // デフォルトのリンク動作を防ぐ
-						window.open(location, "_blank", "width=800,height=600");
+						window.open(location, _blank, windowFeatures);
 					}}
 				>
 					受信側を別のウインドウで開く
 				</a>
 				{" | "}
-				<Link to="/2b" target="_blank">
+				<Link to={receiverURL} target={_blank}>
 					受信側を別タブで開く
 				</Link>
 			</p>
