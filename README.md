@@ -9,3 +9,13 @@ BroadcastChannel の練習を React で。
 hook は
 [use-broadcast-channel - npm](https://www.npmjs.com/package/use-broadcast-channel)
 を使いました。
+
+## 開発
+
+Vite で React で TypeScript + Bun(たぶん npm でもなんでもいい)
+
+```sh
+bun i
+bun dev
+bun run build & bun preview
+```
