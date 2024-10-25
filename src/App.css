@@ -18,3 +18,21 @@ nav {
 nav ol {
 	margin-top: 0;
 }
+
+.btns button {
+	margin: 0.5em;
+	padding: 0.4em 0.7em;
+	font-size: 1em;
+	border: 1px solid black;
+	border-radius: 0.3em;
+	background-color: #f0f0f0;
+}
+.btns button:focus {
+	font-weight: bold;
+}
+.btns button:hover {
+	background-color: #ffffff;
+}
+.btns button:active {
+	background-color: #ccc;
+}

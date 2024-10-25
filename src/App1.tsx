@@ -12,13 +12,15 @@ function App() {
 	return (
 		<>
 			<h1>1. read/write 送受信兼用</h1>
-			<button type="button" onClick={handleClick(-1)}>
-				-
-			</button>
-			<span className="count">{count}</span>
-			<button type="button" onClick={handleClick(1)}>
-				+
-			</button>
+			<p className="btns">
+				<button type="button" onClick={handleClick(-1)}>
+					-
+				</button>
+				<span className="count">{count}</span>
+				<button type="button" onClick={handleClick(1)}>
+					+
+				</button>
+			</p>
 			<p>
 				<OpenInNewWindow />
 			</p>
