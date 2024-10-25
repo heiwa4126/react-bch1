@@ -1,24 +1,30 @@
 import { useBroadcastState } from "use-broadcast-channel";
-import { OpenInNewWindow } from "./Utils";
 import { Links } from "./App";
+import { OpenInNewWindow } from "./Utils";
 
 function App() {
 	const [count, setCount] = useBroadcastState<number>("count", 0);
 
+	const handleClick = (num: number) => {
+		return () => setCount((prev) => prev + num);
+	};
+
 	return (
 		<>
-			<h1>1. use-broadcast-channel 例</h1>
-			<button type="button" onClick={() => setCount((prev) => prev - 1)}>
+			<h1>1. read/write 送受信兼用</h1>
+			<button type="button" onClick={handleClick(-1)}>
 				-
 			</button>
 			<span className="count">{count}</span>
-			<button type="button" onClick={() => setCount((prev) => prev + 1)}>
+			<button type="button" onClick={handleClick(1)}>
 				+
 			</button>
 			<p>
 				<OpenInNewWindow />
 			</p>
-			<Links />
+			<nav>
+				<Links />
+			</nav>
 		</>
 	);
 }

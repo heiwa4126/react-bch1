@@ -8,3 +8,13 @@
 	border: 1px solid black;
 	border-radius: 0.2em;
 }
+
+nav {
+	margin-top: 2em;
+	border-top: 1px solid #ccc;
+	padding-top: 1em;
+}
+
+nav ol {
+	margin-top: 0;
+}
