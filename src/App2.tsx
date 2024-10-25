@@ -5,12 +5,15 @@ import { OpenInNewWindow2 } from "./Utils";
 
 function App() {
 	const [count, setCount] = useState(0);
-	const postUserId = useBroadcastChannel<typeof count>("count2");
+	const postCount = useBroadcastChannel<typeof count>("count2");
 
 	const handleClick = (num: number) => {
 		return () => {
-			setCount((prev) => prev + num);
-			postUserId(count);
+			setCount((prev) => {
+				const newCount = prev + num;
+				postCount(newCount);
+				return newCount;
+			});
 		};
 	};
 
