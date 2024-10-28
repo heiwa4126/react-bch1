@@ -7,13 +7,15 @@ import App3 from "./App3";
 import App3b from "./App3b";
 import App4 from "./App4";
 import App4b from "./App4b";
+import App5 from "./App5";
+import App5b from "./App5b";
 
 function App() {
 	return (
 		<>
 			<Routes>
-				<Route path="/" element={<App4 />} />
-				<Route path="/index.html" element={<App4 />} />
+				<Route path="/" element={<App5 />} />
+				<Route path="/index.html" element={<App5 />} />
 				{/* ↑デフォルトアプリ */}
 				<Route path="/1" element={<App1 />} />
 				<Route path="/2" element={<App2 />} />
@@ -22,6 +24,8 @@ function App() {
 				<Route path="/3b" element={<App3b />} />
 				<Route path="/4" element={<App4 />} />
 				<Route path="/4b" element={<App4b />} />
+				<Route path="/5" element={<App5 />} />
+				<Route path="/5b" element={<App5b />} />
 			</Routes>
 		</>
 	);
@@ -30,6 +34,9 @@ function App() {
 export function Links() {
 	return (
 		<ol reversed>
+			<li>
+				<Link to="/5">オブジェクト通信改良 (送信側)</Link>
+			</li>
 			<li>
 				<Link to="/4">オブジェクト通信 (送信側)</Link>
 			</li>

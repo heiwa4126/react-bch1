@@ -25,6 +25,7 @@ function App() {
 
 	const handleClick = (num: number) => () => {
 		setData({ ...data, count: data.count + num });
+		// TODO: 本番ではimmerとか使うこと。いまは説明用
 	};
 
 	return (
@@ -48,6 +49,7 @@ function App() {
 					type="text"
 					value={data.msg}
 					onChange={(e) => setData({ ...data, msg: e.target.value })}
+					// TODO: 本番ではimmerとか使うこと。いまは説明用
 				/>
 			</p>
 			<nav>
