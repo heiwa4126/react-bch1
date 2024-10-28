@@ -4,8 +4,8 @@ import type { BC4, Data4 } from "./type4";
 
 function App() {
 	const [data, setData] = useState<Data4>();
-	useBroadcastChannel<BC4>("count4", (e: MessageEvent<Data4>) => {
-		console.log(e);
+	useBroadcastChannel<BC4>("count4", (e) => {
+		console.log(e.data);
 		setData(e.data);
 	});
 	const postReq = useBroadcastChannel("count4b");
