@@ -12,11 +12,13 @@ hook は
 
 ## BroadcastChannel の利点
 
-シリアライズ不要で JavaScript オブジェクトを渡せる(例えば LocalStorage はシリアライズ必要)
+シリアライズ不要で JavaScript オブジェクトを渡せる
+(例えば LocalStorage はシリアライズ必要)
 
 ## 開発
 
-Vite で React で TypeScript + Bun(たぶん npm でもなんでもいい)
+Vite で React で TypeScript + Bun
+(たぶん npm でもなんでもいい)
 
 ```sh
 bun i
@@ -24,7 +26,7 @@ bun dev
 bun run build & bun preview
 ```
 
-## 問題点
+## 問題点 1, 2
 
 最初の値が 0 になること。うまく説明できない。
 
@@ -35,7 +37,16 @@ bun run build & bun preview
 これは LocalStorage などを介さないとダメだと思う(メモ:LocalStorage は生オブジェクトが保存できない)。
 いまは Number だけど、Object になることも考えて state ライブラリを使う。
 または準備が整ったことをデータを保持してる側に知らせるサブチャンネルを用意するとか。
+
 → これをやったのがサンプル 3。useRef がちょっと気持ち悪い。
+
+## テスト 4
+
+オブジェクトで通信できるかを確認したのがサンプル 4.
+useBroadcastChannel() のために
+`Record<string,unknown>`が必要なのが気持ち悪い。
+(type4.ts の`[key: string]: unknown`のところ)。
+これ何か使ってるの?
 
 ## 問題点 4
 
