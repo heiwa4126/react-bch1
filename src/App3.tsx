@@ -12,7 +12,6 @@ function App() {
 		countRef.current = count;
 	}, [count, postCount]);
 	useBroadcastChannel("count3b", (_e: MessageEvent<string>) => {
-		// console.log(e.data);
 		postCount(countRef.current);
 	});
 
