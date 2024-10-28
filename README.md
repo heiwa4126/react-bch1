@@ -10,6 +10,10 @@ hook は
 [use-broadcast-channel - npm](https://www.npmjs.com/package/use-broadcast-channel)
 を使いました。
 
+## BroadcastChannel の利点
+
+シリアライズ不要で JavaScript オブジェクトを渡せる(例えば LocalStorage はシリアライズ必要)
+
 ## 開発
 
 Vite で React で TypeScript + Bun(たぶん npm でもなんでもいい)
@@ -22,7 +26,13 @@ bun run build & bun preview
 
 ## 問題点
 
-最初の値が 0 になること。(うまく説明できない)
-これは LocalStorage などを介さないとダメだと思う。
+最初の値が 0 になること。うまく説明できない。
+
+1. サンプル 1 か 2 で、別ウインドウ(またはタブ)を開く。
+2. カウンターを増やすか減らす
+3. もう 1 個別ウインドウ(またはタブ)を開く。表示が 0 になる。
+
+これは LocalStorage などを介さないとダメだと思う(メモ:LocalStorage は生オブジェクトが保存できない)。
 いまは Number だけど、Object になることも考えて state ライブラリを使う。
 または準備が整ったことをデータを保持してる側に知らせるサブチャンネルを用意するとか。
+→ これをやったのがサンプル 3。useRef がちょっと気持ち悪い。

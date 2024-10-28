@@ -29,6 +29,7 @@ function App() {
 				<button type="button" onClick={handleClick(-1)}>
 					-
 				</button>
+				<span className="count">{count}</span>
 				<button type="button" onClick={handleClick(1)}>
 					+
 				</button>
