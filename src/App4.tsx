@@ -1,20 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 import { useBroadcastChannel } from "use-broadcast-channel";
 import { Links } from "./App";
-import type { App4DataType } from "./App4type";
 import { OpenInNewWindow2 } from "./Utils";
+import type { BC4, Data4 } from "./type4";
 
 function App() {
-	const [data, setData] = useState<App4DataType>({ count: 0, msg: "hello" });
-	const postCount = useBroadcastChannel<App4DataType>("count4");
+	const [data, setData] = useState<Data4>({ count: 0, msg: "hello" });
+	const postCount = (() => {
+		const p0 = useBroadcastChannel<BC4>("count4");
+		return (d: Data4) => {
+			p0(d as BC4);
+		};
+	})();
 	const countRef = useRef(data);
 	useEffect(() => {
-		console.log(`useEffect() data=${{ data }}`);
+		console.log(data);
 		postCount(data);
 		countRef.current = data;
 	}, [data, postCount]);
 	useBroadcastChannel("count4b", (e: MessageEvent<string>) => {
-		console.log(`useBroadcastChannel(count4b) ${e.data} data=${{ data }}`);
+		console.log(e, data);
 		postCount(countRef.current);
 	});
 
@@ -42,6 +47,7 @@ function App() {
 			</p>
 			<p>
 				<input
+					className="msg"
 					type="text"
 					value={data.msg}
 					onChange={(e) => setData({ ...data, msg: e.target.value })}

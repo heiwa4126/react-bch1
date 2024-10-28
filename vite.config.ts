@@ -14,4 +14,7 @@ export default defineConfig({
 			},
 		},
 	},
+	esbuild: {
+		drop: ["console", "debugger"], // https://esbuild.github.io/api/#drop
+	},
 });

@@ -36,3 +36,7 @@ nav ol {
 .btns button:active {
 	background-color: #ccc;
 }
+
+.msg {
+	font-size: 1.1em;
+}

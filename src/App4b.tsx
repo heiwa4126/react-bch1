@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useBroadcastChannel } from "use-broadcast-channel";
-import type { App4DataType } from "./App4type";
+import type { BC4, Data4 } from "./type4";
 
 function App() {
-	const [data, setData] = useState<App4DataType>();
-	useBroadcastChannel<App4DataType>("count4", (e) => {
-		console.log(e.data);
+	const [data, setData] = useState<Data4>();
+	useBroadcastChannel<BC4>("count4", (e: MessageEvent<Data4>) => {
+		console.log(e);
 		setData(e.data);
 	});
 	const postReq = useBroadcastChannel("count4b");
