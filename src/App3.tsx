@@ -8,10 +8,12 @@ function App() {
 	const postCount = useBroadcastChannel<typeof count>("count3");
 	const countRef = useRef(count);
 	useEffect(() => {
+		console.log(`useEffect() count=${count}`);
 		postCount(count);
 		countRef.current = count;
 	}, [count, postCount]);
-	useBroadcastChannel("count3b", (_e: MessageEvent<string>) => {
+	useBroadcastChannel("count3b", (e: MessageEvent<string>) => {
+		console.log(`useBroadcastChannel(count3b) ${e.data} count=${countRef.current}`);
 		postCount(countRef.current);
 	});
 
