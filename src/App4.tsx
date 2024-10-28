@@ -40,7 +40,13 @@ function App() {
 					+
 				</button>
 			</p>
-			<p>{data.msg}</p>
+			<p>
+				<input
+					type="text"
+					value={data.msg}
+					onChange={(e) => setData({ ...data, msg: e.target.value })}
+				/>
+			</p>
 			<nav>
 				<Links />
 			</nav>
