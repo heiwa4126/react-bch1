@@ -17,9 +17,7 @@ function App() {
 		postCount(countRef.current);
 	});
 
-	const handleClick = (num: number) => {
-		return () => setCount((prev) => prev + num);
-	};
+	const handleClick = (num: number) => () => setCount((prev) => prev + num);
 
 	return (
 		<>

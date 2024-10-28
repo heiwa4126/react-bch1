@@ -23,11 +23,8 @@ function App() {
 		postCount(countRef.current);
 	});
 
-	const handleClick = (num: number) => {
-		return () => {
-			const newData = { ...data, count: data.count + num };
-			setData(newData);
-		};
+	const handleClick = (num: number) => () => {
+		setData({ ...data, count: data.count + num });
 	};
 
 	return (
