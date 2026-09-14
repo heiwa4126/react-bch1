@@ -9,12 +9,12 @@ export default defineConfig({
 		rollupOptions: {
 			output: {
 				manualChunks: {
-					r: ["react", "react-dom"],
-				},
-			},
-		},
+					r: ["react", "react-dom"]
+				}
+			}
+		}
 	},
 	esbuild: {
-		drop: ["console", "debugger"], // https://esbuild.github.io/api/#drop
-	},
+		drop: ["console", "debugger"] // https://esbuild.github.io/api/#drop
+	}
 });
