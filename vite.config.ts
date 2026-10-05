@@ -1,20 +1,29 @@
-import react from "@vitejs/plugin-react-swc";
-import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { defineConfig, lazyPlugins } from "vite-plus";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	plugins: [react()],
-	build: {
-		minify: "esbuild",
-		rollupOptions: {
-			output: {
-				manualChunks: {
-					r: ["react", "react-dom"]
-				}
-			}
-		}
-	},
-	esbuild: {
-		drop: ["console", "debugger"] // https://esbuild.github.io/api/#drop
-	}
+  staged: {
+    "*": "vp check --fix",
+  },
+  fmt: {},
+  lint: {
+    jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
+    rules: { "vite-plus/prefer-vite-plus-imports": "error" },
+    options: { typeAware: true, typeCheck: true },
+  },
+  plugins: lazyPlugins(() => [react()]),
+  // build: {
+  //   minify: "esbuild",
+  //   rollupOptions: {
+  //     output: {
+  //       manualChunks: {
+  //         r: ["react", "react-dom"],
+  //       },
+  //     },
+  //   },
+  // },
+  // esbuild: {
+  //   drop: ["console", "debugger"], // https://esbuild.github.io/api/#drop
+  // },
 });

@@ -7,13 +7,13 @@ import "./index.css";
 
 const rootElement = document.getElementById("root");
 if (rootElement) {
-	createRoot(rootElement).render(
-		<StrictMode>
-			<HashRouter>
-				<App />
-			</HashRouter>
-		</StrictMode>
-	);
+  createRoot(rootElement).render(
+    <StrictMode>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </StrictMode>,
+  );
 } else {
-	console.error("Failed to find the root element.");
+  console.error("Failed to find the root element.");
 }

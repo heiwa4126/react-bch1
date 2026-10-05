@@ -17,13 +17,12 @@ hook は
 
 ## 開発
 
-Vite で React で TypeScript + Bun
-(たぶん npm でもなんでもいい)
+Vite+ で React で
 
 ```sh
-bun i
-bun dev
-bun run build & bun preview
+vp i
+vp dev
+vp build & vp preview
 ```
 
 ## 問題点 1, 2

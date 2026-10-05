@@ -1,24 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 
 export function useBroadcastChannel(channelName: string) {
-	const [message, setMessage] = useState(undefined);
-	const bcRef = useRef<BroadcastChannel>();
+  const [message, setMessage] = useState(undefined);
+  const bcRef = useRef<BroadcastChannel | null>(null);
 
-	useEffect(() => {
-		const bc = new BroadcastChannel(channelName);
-		bcRef.current = bc;
-		bc.onmessage = (e) => {
-			setMessage(e.data);
-		};
-		return () => {
-			bc.close();
-		};
-	}, [channelName]);
+  useEffect(() => {
+    const bc = new BroadcastChannel(channelName);
+    bcRef.current = bc;
+    bc.onmessage = (e) => {
+      setMessage(e.data);
+    };
+    return () => {
+      bc.close();
+    };
+  }, [channelName]);
 
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-	const postMessage = (msg: any) => {
-		bcRef.current?.postMessage(msg);
-	};
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  const postMessage = (msg: any) => {
+    bcRef.current?.postMessage(msg);
+  };
 
-	return [message, postMessage];
+  return [message, postMessage];
 }

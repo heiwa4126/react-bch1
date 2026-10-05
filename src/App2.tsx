@@ -4,37 +4,37 @@ import { Links } from "./App";
 import { OpenInNewWindow2 } from "./Utils";
 
 function App() {
-	const [count, setCount] = useState(0);
-	const postCount = useBroadcastChannel<typeof count>("count2");
+  const [count, setCount] = useState(0);
+  const postCount = useBroadcastChannel<typeof count>("count2");
 
-	const handleClick = (num: number) => {
-		return () => {
-			setCount((prev) => {
-				const newCount = prev + num;
-				postCount(newCount);
-				return newCount;
-			});
-		};
-	};
+  const handleClick = (num: number) => {
+    return () => {
+      setCount((prev) => {
+        const newCount = prev + num;
+        postCount(newCount);
+        return newCount;
+      });
+    };
+  };
 
-	return (
-		<>
-			<h1>2. Write-only/Read-only (送信側)</h1>
-			<p>
-				<OpenInNewWindow2 receiverURL={"/2b"} />
-			</p>
-			<p className="btns">
-				<button type="button" onClick={handleClick(-1)}>
-					-
-				</button>
-				<button type="button" onClick={handleClick(1)}>
-					+
-				</button>
-			</p>
-			<nav>
-				<Links />
-			</nav>
-		</>
-	);
+  return (
+    <>
+      <h1>2. Write-only/Read-only (送信側)</h1>
+      <p>
+        <OpenInNewWindow2 receiverURL={"/2b"} />
+      </p>
+      <p className="btns">
+        <button type="button" onClick={handleClick(-1)}>
+          -
+        </button>
+        <button type="button" onClick={handleClick(1)}>
+          +
+        </button>
+      </p>
+      <nav>
+        <Links />
+      </nav>
+    </>
+  );
 }
 export default App;
