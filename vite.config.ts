@@ -1,7 +1,7 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig, lazyPlugins } from "vite-plus";
 
-// https://vitejs.dev/config/
+// https://viteplus.dev/config/
 export default defineConfig({
   staged: {
     "*": "vp check --fix",
