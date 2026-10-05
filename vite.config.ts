@@ -14,9 +14,9 @@ export default defineConfig({
   },
   plugins: lazyPlugins(() => [react()]),
   build: {
-    minify: "oxc",
-    rollupOptions: {
+    rolldownOptions: {
       output: {
+        minify: true,
         codeSplitting: {
           groups: [{ name: "r", test: /node_modules[\\/](react|react-dom)([\\/]|$)/ }],
         },
