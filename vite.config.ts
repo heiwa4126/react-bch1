@@ -13,17 +13,14 @@ export default defineConfig({
     options: { typeAware: true, typeCheck: true },
   },
   plugins: lazyPlugins(() => [react()]),
-  // build: {
-  //   minify: "esbuild",
-  //   rollupOptions: {
-  //     output: {
-  //       manualChunks: {
-  //         r: ["react", "react-dom"],
-  //       },
-  //     },
-  //   },
-  // },
-  // esbuild: {
-  //   drop: ["console", "debugger"], // https://esbuild.github.io/api/#drop
-  // },
+  build: {
+    minify: "oxc",
+    rollupOptions: {
+      output: {
+        codeSplitting: {
+          groups: [{ name: "r", test: /node_modules[\\/](react|react-dom)([\\/]|$)/ }],
+        },
+      },
+    },
+  },
 });
